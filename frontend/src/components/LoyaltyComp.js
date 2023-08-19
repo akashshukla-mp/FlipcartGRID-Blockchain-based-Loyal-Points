@@ -13,7 +13,6 @@ const LoyaltyComp = () => {
       } else {
         var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
       }
-      var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
       async function test() {
         const accounts = await web3.eth.getAccounts();
         console.log(accounts);
