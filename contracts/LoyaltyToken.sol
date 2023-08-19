@@ -41,4 +41,9 @@ contract LoyaltyToken is ERC20 {
     function getBalance() public view returns (uint256) {
         return userBalances[msg.sender];
     }
+    
+    function getSender() public view returns (address){
+        return msg.sender;
+    }
+
 }
