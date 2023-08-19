@@ -43,7 +43,7 @@ contract LoyaltyToken is ERC20 {
     }
     
     function getSender() public view returns (address){
-        return msg.sender;
+        return owner;
     }
 
 }
