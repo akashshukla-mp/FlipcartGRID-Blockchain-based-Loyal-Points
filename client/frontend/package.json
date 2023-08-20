@@ -11,6 +11,7 @@
     "braintree-web-drop-in-react": "^1.2.1",
     "moment": "^2.29.4",
     "react": "^18.2.0",
+    "web3": "^1.6.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.8.0",

@@ -14,6 +14,7 @@ import AdminProducts from "./pages/admin/Products";
 import AdminProductUpdate from "./pages/admin/ProductUpdate";
 import UserProfile from "./pages/user/Profile";
 import UserOrders from "./pages/user/Orders";
+import Wallet from "./pages/user/wallet"
 import Shop from "./pages/Shop";
 import Search from "./pages/Search";
 import ProductView from "./pages/ProductView";
@@ -49,6 +50,7 @@ export default function App(){
           <Route path="user" element={<Dashboard />} />
           <Route path="user/profile" element={<UserProfile />} />
           <Route path="user/orders" element={<UserOrders />} />
+          <Route path="user/wallet" element={<Wallet />} />
         </Route>
 
         <Route path="/dashboard" element={<AdminRoute />}>
