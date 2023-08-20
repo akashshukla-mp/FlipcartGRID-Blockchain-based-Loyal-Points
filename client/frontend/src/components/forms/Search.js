@@ -24,7 +24,7 @@ export default function Search () {
     return (
         <form className="d-flex" onSubmit={handleSubmit}>
             <input 
-                className="form-control"
+                className="form-control my-search-box"
                 type="search"
                 style = {{borderRadius: "0px"}}
                 placeholder="Search"

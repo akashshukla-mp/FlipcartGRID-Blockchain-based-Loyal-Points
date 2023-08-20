@@ -24,6 +24,7 @@
 .form-control {
   -webkit-box-shadow: none !important;
   outline: -webkit-focus-ring-color auto 0px !important;
+  /* background-color: rgb(69, 69, 69) !important; */
 }
 
 /* jumbotron color animation css */
@@ -72,4 +73,16 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+.my-search-box{
+  /* border: 2px solid red; */
+  border-radius: 2em !important;
+  padding-left: 2em;
+  width: 12em;
+  height: 2em;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1em;
+  background-color: grey;
 }

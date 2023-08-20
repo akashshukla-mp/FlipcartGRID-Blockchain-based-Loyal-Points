@@ -1,7 +1,26 @@
 .myMenu{
     /* border: 2px solid red; */
     display: flex;
+    background-color: rgb(69, 69, 69) !important;
+}
 
+.left-menu{
+    display: flex;
+    margin-left: 2em;
+}
+
+.right-menu{
+    display: flex;
+    margin-right: 2em;
+}
+
+
+.myMenu li{
+    margin: 0px;
+    padding: 0px;   
+}
+.myMenu li a{
+    color: gold !important;
 }
 
 .myBoxyShadow:hover{
