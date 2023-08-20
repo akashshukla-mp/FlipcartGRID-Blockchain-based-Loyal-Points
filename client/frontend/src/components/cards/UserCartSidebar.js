@@ -75,7 +75,11 @@ export default function UserCartSidebar(){
             <h4>Your cart summary</h4>
             Total/Address/Payment
             <hr/>
-            <h6>Total: {cartTotal()}</h6>    
+            <h6>Total: {cartTotal()}</h6>  
+            <button className="btn btn-outline-primary">
+                Redeem Loyalty Coins
+            </button>
+
             {
                 auth?.user?.address ? (
                     <>
