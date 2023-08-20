@@ -61,6 +61,7 @@ export default function UserCartSidebar(){
             const { data } = await axios.post("/braintree/payment",{
                 nonce, 
                 cart,
+                rewardPointSpent : balance,
             })
             // console.log("Handle buy response", data);
             setLoading(false);  
