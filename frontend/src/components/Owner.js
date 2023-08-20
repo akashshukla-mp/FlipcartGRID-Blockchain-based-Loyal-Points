@@ -20,7 +20,7 @@ const LoyaltyComp = () => {
       //  var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
       async function test() {
         const accounts = await web3.eth.getAccounts();
-        console.log(accounts);
+        // console.log(accounts);
 
         const MainObject = new web3.eth.Contract(
         ContractInfo.abi,
@@ -31,29 +31,22 @@ const LoyaltyComp = () => {
       console.log(MainObject);
       
       const seller_1 = accounts[1];
-      await MainObject.methods.checkBalance().call({ from: seller_1 });
       
-
-
-      // // const balance = await MainObject.methods.
-      // const senderAddress = accounts[0];
-      // var balance = await MainObject.methods.userBalances(senderAddress).call();
-      // console.log("User Balance:", balance);
-      // console.log("Balance:", balance);
-      // // await MainObject.methods.earnTokens(100).call();
+      await MainObject.methods.addSeller(seller_1).send({ from: accounts[0] });
+      var selleriii = await MainObject.methods.isSeller(seller_1).call();
+      console.log("Seller_1", selleriii);
+      await MainObject.methods.removeSeller(seller_1).send({ from: accounts[0] });
+      selleriii = await MainObject.methods.isSeller(seller_1).call();
+      console.log("Seller_1", selleriii);
       
-      // var balance = await MainObject.methods.checkBalance().call({ from: senderAddress });
-      // console.log("Balance before", balance);
-      // await MainObject.methods.earnTokens(100).send({ from: senderAddress });
-      // await MainObject.methods.redeemTokens(50).send({ from: senderAddress });
-
-      // var balance = await MainObject.methods.checkBalance().call({ from: senderAddress });
-      // console.log("Balance after", balance);
+      const newBalance = 500;
+      await MainObject.methods.setSellerBalance(seller_1, newBalance).send({ from: accounts[0] });
+      var seller_1_balance = await MainObject.methods.userBalances(seller_1).call({ from: accounts[0] });
+      console.log("Seller_1 balance", seller_1_balance);
+      // await MainObject.methods.setSellerBalance(seller_1, 100).call({from: owner});
+      // const balance = await MainObject.methods.owner().call();
+      // console.log("Owner", balance);
       
-      // console.log("User Balance:", balance);
-      // // console.log("Sender Address:", MainObject.methods.getSender().call());
-      // const printit = await MainObject.methods.getSender().call();
-      //   console.log("My msg.sender", printit);
 
     }
   
