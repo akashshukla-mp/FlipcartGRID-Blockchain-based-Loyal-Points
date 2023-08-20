@@ -10,7 +10,7 @@ contract MergedLoyaltyContract is ERC20 {
     mapping(address => uint256) public userBalances;
     // mapping(address => uint256) public sellerBalances;
     mapping(address => bool) public isSeller;
-    // address[] public users;
+
 
     constructor(
         string memory name,
@@ -70,7 +70,7 @@ contract MergedLoyaltyContract is ERC20 {
             "Insufficient balance to redeem"
         );
 
-        _burn(msg.sender, amount);
+        // _burn(msg.sender, amount);
         userBalances[msg.sender] -= amount;
     }
 

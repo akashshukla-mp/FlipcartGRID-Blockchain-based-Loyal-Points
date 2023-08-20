@@ -18,7 +18,7 @@ export default function Cart() {
     // hooks
     const navigate = useNavigate();
 
-    const contractAdd = '0xA8FDbe1fd3BC60ad70F4db1799Db3E8817D04726';
+    const contractAdd = '0xE1BeeF51e0d3Af6aFDfaD12ea96af12Bd714DdD6';
     // if (typeof web3 !== "undefined") {
     //     var web3 = new Web3(web3.currentProvider);
     // } else {

@@ -43,13 +43,8 @@ const LoyaltyComp = () => {
     await MainObject.methods.setSellerBalance(seller_1, newBalance).send({ from: accounts[0] });
     var seller_1_balance = await MainObject.methods.userBalances(seller_1).call({ from: accounts[0] });
     console.log("Seller_1 balance", seller_1_balance);
-    // await MainObject.methods.setSellerBalance(seller_1, 100).call({from: owner});
-    // const balance = await MainObject.methods.owner().call();
-    // console.log("Owner", balance);
-
 
   }
-
 
   test();
 
