@@ -30,23 +30,34 @@ const LoyaltyComp = () => {
 
     console.log(MainObject);
 
+    // const seller_1 = accounts[1];
+    const user_1 = accounts[2];
     const seller_1 = accounts[1];
 
     await MainObject.methods.addSeller(seller_1).send({ from: accounts[0] });
     var selleriii = await MainObject.methods.isSeller(seller_1).call();
-    console.log("Seller_1", selleriii);
-    await MainObject.methods.removeSeller(seller_1).send({ from: accounts[0] });
-    selleriii = await MainObject.methods.isSeller(seller_1).call();
-    console.log("Seller_1", selleriii);
 
-    const newBalance = 500;
-    await MainObject.methods.setSellerBalance(seller_1, newBalance).send({ from: accounts[0] });
-    var seller_1_balance = await MainObject.methods.userBalances(seller_1).call({ from: accounts[0] });
-    console.log("Seller_1 balance", seller_1_balance);
+    var user_1_balance = await MainObject.methods.userBalances(user_1).call();
+    console.log("User_1 balance", user_1_balance)
+
+
+    await MainObject.methods.grantTokensToUser(user_1, 5).send({from: seller_1});
+    var user_1_balance = await MainObject.methods.userBalances(user_1).call();
+    console.log("User_1 balance", user_1_balance)
+
+    // await MainObject.methods.addSeller(seller_1).send({ from: seller_1 });
+    // var selleriii = await MainObject.methods.isSeller(seller_1).call();
+    // console.log("Seller_1", selleriii);
+    // await MainObject.methods.removeSeller(seller_1).send({ from: accounts[0] });
+    // selleriii = await MainObject.methods.isSeller(seller_1).call();
+    // console.log("Seller_1", selleriii);
+
+    // const newBalance = 500;
+    // await MainObject.methods.setSellerBalance(seller_1, newBalance).send({ from: accounts[0] });
+    // console.log("Seller_1 balance", seller_1_balance);
     // await MainObject.methods.setSellerBalance(seller_1, 100).call({from: owner});
     // const balance = await MainObject.methods.owner().call();
     // console.log("Owner", balance);
-
 
   }
 

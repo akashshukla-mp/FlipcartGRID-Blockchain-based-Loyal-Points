@@ -48,7 +48,7 @@ contract MergedLoyaltyContract is ERC20 {
         uint256 balance
     ) public onlyOwner {
         userBalances[seller] = balance;
-        isSeller[seller] = true;
+        // isSeller[seller] = true;
     }
 
     function grantTokensToUser(address user, uint256 amount) public onlySeller {

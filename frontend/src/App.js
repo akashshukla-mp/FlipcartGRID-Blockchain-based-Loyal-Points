@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import LoyaltyComp from './components/LoyaltyComp';
 import Owner from './components/Owner';
+import Seller from './components/Seller';
+import User from './components/User';
+
 // import DecayInteractionComponent from './components/DecayInteraction';
 // import LoyaltyProgramInteraction from './components/LoyaltyProgramInteraction';
 const Web3 = require("web3");
@@ -16,7 +19,10 @@ function App() {
     <div className="App">
 
       {/* <LoyaltyComp/> */}
-      <Owner/>
+      {/* <Owner/> */}
+      {/* <Seller/> */}
+      <User/>
+      
       
     </div>
   );
