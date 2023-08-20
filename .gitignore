@@ -1,3 +1,6 @@
 node_modules/
 build/
 ../node_modules
+client/frontend/node_modules
+client/backend/node_modules
+client/backend/.env

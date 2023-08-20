@@ -1,0 +1,20 @@
+.seller_ask{
+    /* border: 2px solid red; */
+    display: flex;
+    padding: 1em;
+}
+
+.seller_ask label{
+    /* border: 2px solid red; */
+    margin-left: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5em;
+}
+
+.seller_ask input{
+    /* border: 2px solid red; */
+    /* padding: 2em; */
+    margin-right: 0.5em;
+}
