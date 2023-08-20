@@ -94,7 +94,7 @@ export default function UserProfile() {
                                 onChange = {(e) => setAddress(e.target.value)}
                             />
                             <button className="btn btn-primary m-2 p-2">
-                                Submit
+                                Update
                             </button>
                         </form>
                     </div>
