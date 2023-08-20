@@ -60,7 +60,8 @@ export default function UserOrders() {
                                                 <th scope="col">Ordered</th>
                                                 <th scope="col">Loyalty Coin Spent</th>
                                                 <th scope="col">Payment</th>
-                                                <th scope="col">Loyalty Coin Earned</th>
+                                                <th scope="col">Loyalty Coin
+                                                 Earned</th>
                                                 <th scope="col">Quantity</th>
 
                                             </tr>
