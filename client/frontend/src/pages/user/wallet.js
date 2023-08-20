@@ -50,7 +50,6 @@ export default function UserOrders() {
         );
         var amt = await MainObject.methods.checkBalance().call({ from: accounts[0] });
         // await MainObject.methods.addSeller(seller_1).call({ from: accounts[0] });
-        
         setBalance(amt);
     }
     
