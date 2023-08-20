@@ -11,8 +11,8 @@ dotenv.config();
 // const express = require("express");
 const app = express();
 
-// db
-mongoose.connect(process.env.MONGO_URI)
+const uri = process.env.MONGO_URI || "mongodb://0.0.0.0:27017/GRID";
+mongoose.connect(uri)
         .then(() => console.log("DB Connected"))
         .catch((err) => console.log("DB Connection Error", err));
 
@@ -43,7 +43,7 @@ app.use("/api", authRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 
-const port=process.env.PORT;
+const port=process.env.PORT || 8080;
 
 app.listen(port, function(){
     console.log(`Server is running on port ${port}`);

@@ -8,7 +8,7 @@ import { toast } from "react-hot-toast";
 import ContractInfo from "../../MergedLoyaltyContract.json"
 const Web3 = require("web3");
 
-export default function UserCartSidebar(){
+export default function UserCartSidebar(props){
     // context
     const [auth, setAuth] = useAuth();
     const [cart, setCart] = useCart();
@@ -76,32 +76,23 @@ export default function UserCartSidebar(){
         }
     }
 
-
-    const contractAdd = '0xE1BeeF51e0d3Af6aFDfaD12ea96af12Bd714DdD6';
-    // if (typeof web3 !== "undefined") {
-    //     var web3 = new Web3(web3.currentProvider);
-    // } else {
-    //     var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
-    // }
     
     useState(() => {
         cartTotal();
-        const contractAdd = '0xE1BeeF51e0d3Af6aFDfaD12ea96af12Bd714DdD6';
         var web3 = new Web3(window.ethereum);
-        const seller_1 = '0x37A38aF9874151d44B6105ca2418fb80d793d1a7';
-        const owner = '0x99364808c4B5598ac319029652A78Ae1279946b4';
-        async function getBalance() {
+                async function getBalance() {
             const accounts = await web3.eth.getAccounts();
-            console.log(accounts);
+            // console.log(accounts);
+            const curAccount = accounts[0];
     
             const MainObject = new web3.eth.Contract(
             ContractInfo.abi,
             // CONTACT_ADDRESS.CONTACT_ADDRESS
-            contractAdd
+            props.contractAdd
     
             );
             // await MainObject.methods.setSellerBalance(seller_1, 4400).send({ from: owner });
-            var amt = await MainObject.methods.checkBalance().call({ from: seller_1 });
+            var amt = await MainObject.methods.checkBalance().call({ from: curAccount });
             console.log(amt)
             // await MainObject.methods.addSeller(seller_1).call({ from: accounts[0] });
             setBalance(amt);
@@ -111,23 +102,22 @@ export default function UserCartSidebar(){
 
     }, [])
     async function redeem() {
-        const contractAdd = '0xE1BeeF51e0d3Af6aFDfaD12ea96af12Bd714DdD6';
         var web3 = new Web3(window.ethereum);
-        const seller_1 = '0x37A38aF9874151d44B6105ca2418fb80d793d1a7';
         const accounts = await web3.eth.getAccounts();
         // console.log(accounts);
+        const curAccount = accounts[0];
 
         const MainObject = new web3.eth.Contract(
         ContractInfo.abi,
         // CONTACT_ADDRESS.CONTACT_ADDRESS
-        contractAdd
+        props.contractAdd
 
         );
         // // await MainObject.methods.setSellerBalance(seller_1, 500).send({ from: owner });
         // var amt = await MainObject.methods.checkBalance().call({ from: seller_1 });
         // console.log(amt)
         // await MainObject.methods.addSeller(seller_1).call({ from: accounts[0] });
-        await MainObject.methods.redeemTokens(balance).send({from: seller_1});  
+        await MainObject.methods.redeemTokens(balance).send({from: curAccount});  
         cartTotal();
         setBalance(0);
     }

@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 
-
+const JWT = process.env.JWT_SECRET || 'yourSuperSecret'
 export const requireSignin = (req, res, next)=>{
     // console.log("REQ HEADERS => ", req.headers);
     try{
-        const decoded = jwt.verify(req.headers.authorization, process.env.JWT_SECRET);
+        const decoded = jwt.verify(req.headers.authorization, JWT);
         // console.log("Decoded => ", decoded);
         req.user = decoded;
     }

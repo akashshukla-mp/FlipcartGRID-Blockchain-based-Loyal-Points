@@ -7,8 +7,9 @@ import moment from "moment";
 import ProductCardHorizontal from "../../components/cards/ProductCardHorizontal";
 import ContractInfo from "./MergedLoyaltyContract.json";
 const Web3 = require("web3");
+
 // 0xA8FDbe1fd3BC60ad70F4db1799Db3E8817D04726
-export default function UserOrders() {
+export default function UserOrders(props) {
     // context
     const [auth, setAuth] = useAuth();
 
@@ -30,14 +31,13 @@ export default function UserOrders() {
             console.log(err);
         }
     }
-    const contractAdd = '0xA8FDbe1fd3BC60ad70F4db1799Db3E8817D04726';
+    const contractAdd = process.env.REACT_APP_CONTRACT_ADDRESS ||'0xE1BeeF51e0d3Af6aFDfaD12ea96af12Bd714DdD6';
     // if (typeof web3 !== "undefined") {
     //     var web3 = new Web3(web3.currentProvider);
     // } else {
     //     var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
     // }
     var web3 = new Web3(window.ethereum);
-    const seller_1 = '0x6dA8508283DD76a3302cd17B1893271d146819ae';
     async function getBalance() {
         const accounts = await web3.eth.getAccounts();
         // console.log(accounts);
@@ -45,7 +45,7 @@ export default function UserOrders() {
         const MainObject = new web3.eth.Contract(
         ContractInfo.abi,
         // CONTACT_ADDRESS.CONTACT_ADDRESS
-        contractAdd
+        props.contractAdd
 
         );
         var amt = await MainObject.methods.checkBalance().call({ from: accounts[0] });

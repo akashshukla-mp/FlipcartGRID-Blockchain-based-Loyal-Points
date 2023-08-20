@@ -8,7 +8,7 @@ import ProductCardHorizontal from "../components/cards/ProductCardHorizontal";
 import ContractInfo from "./user/MergedLoyaltyContract.json"
 const Web3 = require("web3");
 
-export default function Cart() {
+export default function Cart(props) {
     // context
     const [cart, setCart] = useCart();
     const [auth, setAuth] = useAuth(); 
@@ -85,7 +85,7 @@ export default function Cart() {
                             </div>
 
                         </div>
-                        <UserCartSidebar />
+                        <UserCartSidebar contractAdd = {props.contractAdd} />
                     </div>
                 </div>
             )}

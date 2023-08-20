@@ -44,7 +44,8 @@ export const register = async (req, res)=>{
         const user = await new User(newUserData).save();
 
         // 6. Create a signed token
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+       c
+        const token = jwt.sign({ _id: user._id }, JWT, { expiresIn: "7d" });
 
         // 7. Send the response
         res.json({
