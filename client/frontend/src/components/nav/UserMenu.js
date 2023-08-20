@@ -17,6 +17,11 @@ export default function UserMenu() {
                         Orders
                     </NavLink>
                 </li>
+                <li>
+                    <NavLink className="list-group-item" to="/dashboard/user/wallet">
+                        Wallet
+                    </NavLink>
+                </li>
             </ul>
         </>
     )
