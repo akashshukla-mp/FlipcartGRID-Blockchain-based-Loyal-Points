@@ -9,7 +9,6 @@ dotenv.config();
 
 
 export const register = async (req, res)=>{
-    console.log(req.body);
 
     try{
         // 1. Destructre name, email, password from the req.body
@@ -69,7 +68,7 @@ export const login = async (req, res)=>{
     try{
         // 1. Destructre email, password from the req.body
         const { email, password } = req.body;
-        console.log(req.body);
+        
         // 2. All fields require validation
         if (!email){
             return res.json({error: "Email is required"});

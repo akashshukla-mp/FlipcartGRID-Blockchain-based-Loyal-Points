@@ -6,10 +6,16 @@ import axios from "axios";
 import moment from "moment";
 import ProductCardHorizontal from "../../components/cards/ProductCardHorizontal";
  
+const getRewardPointEarned = (products) => {
+    let total = 0;
+    for(let i=0; i<products.length; i++){
+        total += products[i].price;
+    }
+    return total/10;
+}
 export default function UserOrders() {
     // context
     const [auth, setAuth] = useAuth();
-
     // state
     const [orders, setOrders] = useState([]);
 
@@ -41,6 +47,8 @@ export default function UserOrders() {
                             Orders
                         </div>
                         {orders?.map((o, i) => {
+                            let amtEarned = getRewardPointEarned(o.products);
+                            if(o?.status !== "Delivered") amtEarned = "Will be debited when return period is over"
                             return (
                                 <div key={o._id} className="border shodow bg-light rounded-4 mb-5">
                                     <table className="table">
@@ -50,8 +58,11 @@ export default function UserOrders() {
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Buyer</th>
                                                 <th scope="col">Ordered</th>
+                                                <th scope="col">Loyalty Coin Spent</th>
                                                 <th scope="col">Payment</th>
+                                                <th scope="col">Loyalty Coint Earned</th>
                                                 <th scope="col">Quantity</th>
+
                                             </tr>
                                         </thead>
                                         <tbody> 
@@ -60,7 +71,10 @@ export default function UserOrders() {
                                                 <td>{o?.status}</td>
                                                 <td>{o?.buyer?.name}</td>
                                                 <td>{moment(o?.createdAt).fromNow()}</td>
+                                                <td>{o?.rewardPointSpent}</td>
                                                 <td>{o?.payment?.success ? "Success" : "Failed"}</td>
+                                                <td>{amtEarned}</td>
+                                                {/* <td>{isDelivered ? {amtEarned} : 'Pending'}</td> */}
                                                 <td>{o?.products?.length} products</td>
                                             </tr>
                                         </tbody>    

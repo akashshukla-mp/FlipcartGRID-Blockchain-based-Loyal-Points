@@ -255,7 +255,7 @@ export const getToken = async (req, res) => {
 export const processPayment = async (req, res) => {
     try{
         // console.log(req.body);
-        const { nonce, cart } = req.body;
+        const { nonce, cart, rewardPointSpent } = req.body;
 
         let total=0;
         cart.map((i) => {
@@ -273,11 +273,13 @@ export const processPayment = async (req, res) => {
             if (result){
                 // res.send(result);
                 // create order
-                const order = new Order({
+                const newOrder = {
                     products: cart,
                     payment: result,
                     buyer: req.user._id,
-                }).save();
+                }
+                if(rewardPointSpent) newOrder.rewardPointSpent = rewardPointSpent;
+                const order = new Order(newOrder).save();
                 // Decrement quantity, increment sold
                 decrementQuantity(cart);
                 res.json({ok: true});
